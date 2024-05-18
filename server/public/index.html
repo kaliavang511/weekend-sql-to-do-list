@@ -12,6 +12,19 @@
   <header>
     <h1>SQL TO-DO List</h1>
   </header>
+  <form onSubmit="postList(event)">
+    <input id="todosinput"
+    data-testid="toDoTextInput"
+    placeholder="Enter here">
+
+
+    <button data-testid="submitButton"
+    type="submit"
+    >submit</button>
+
+    <div 
+    id="outPut"> </div>
+  </form>
 
 </body>
 </html>

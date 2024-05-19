@@ -15,8 +15,6 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    console.log('req.body', req.body);
-
     let toDos = req.body
     
     let toDosArray = [toDos.text]
@@ -29,7 +27,6 @@ router.post('/', (req, res) => {
             res.sendStatus(201)
         })
         .catch((err) => {
-            console.log(`Error making query.. '${queryText}'`, err)
             res.sendStatus(500)
         })
 });
@@ -40,20 +37,41 @@ router.delete('/:id', (req, res) => {
     let queryText = `
         DELETE FROM "todos"  WHERE "id" = $1;
     `
-
     let reqId = [req.params.id]
-
     pool.query(queryText, reqId)
         .then((result) => {
-            console.log("Successfully Deleted...")
             res.sendStatus(200)
+        })
+        .catch((err) => {
+            res.sendStatus(500)
+        })
+});
+
+
+router.put('/complete/:id', (req, res) => {
+    let completeId = req.params.id
+    let completed = req.body.completed
+
+    let queryText = ''
+
+    if (completed === 'false'){
+        queryText = `
+            UPDATE "todos" SET "isComplete"=TRUE
+            WHERE "id"= $1;
+        `
+    } else {
+        res.sendStatus(500)
+    }
+
+    pool.query(queryText, [completeId])
+        .then((result) => {
+            res.sendStatus(204)
         })
         .catch((err) => {
             console.log(`Error making query.. '${queryText}'`, err)
             res.sendStatus(500)
         })
-});
-
+})
 
 
 

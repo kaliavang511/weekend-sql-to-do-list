@@ -12,22 +12,19 @@ function appendToDosToDom(toDoList) {
     toDosBody.innerHTML = '';
     for (let toDos of toDoList) {
         toDosBody.innerHTML += `
-       
-                <li data-testid="toDoItem" class="completed">
-                ${toDos.text}
-                </li>
+         <ul>
+          <li id=list data-testid="toDoItem">${toDos.text}
+        <button onClick="changeToCompleted('false',${toDos.id})" data-testid="completeButton"> complete </button> 
+        <button onClick="deleteToDos(${toDos.id})" data-testid="deleteButton"> 
+        Delete 
+        </button> 
+        </li>
+    `;
+   
 
-                <li>
-                <button onClick="deleteToDos"(${toDos.id})">
-                delete
-                </button>
-               </li>
-
-      
-      
-                
-        `
     }
+
+    
 }
 
 
@@ -43,8 +40,34 @@ function postList(event){
     }).catch((error) => {
         alert('Something went wrong');
     });
+    
   
 }
+
+function changeToCompleted(completed, completeId) {   
+    axios({
+        method: "PUT",
+        url: "/todos/complete/" + completeId,
+        data: {
+            completed: completed
+        }
+    })
+    .then((response) => {
+        getToDos()
+    })
+    .catch((error) => {
+        console.log('Error', error);
+        alert('Something went wrong on /songs/rank/:id');
+    })
+    let div = document.querySelector('div')
+    if (list === 'true'){
+        div.classList.add('completed')
+
+    }
+
+    
+}
+
 
 
 
@@ -57,7 +80,6 @@ function deleteToDos(toDosId) {
     .then((response) => {
         getToDos();
     }).catch((error) => {
-        console.log('Error', error);
         alert('Something went wrong');
     });
 }

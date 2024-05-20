@@ -12,17 +12,20 @@ function appendToDosToDom(toDoList) {
     toDosLists.innerHTML = '';
     for (let toDos of toDoList) {
 
+
+    
         toDosLists.innerHTML += 
         
         `
-         <ul>
-          <li id=list data-testid="toDoItem">${toDos.text}
+       <li id=list data-testid="toDoItem" class=${toDos.isComplete? 'completed':'notCompleted'}>${toDos.text}
         <button class="completedBtn" onClick="changeToCompleted('false',${toDos.id})" data-testid="completeButton"> complete </button> 
         <button onClick="deleteToDos(${toDos.id})" data-testid="deleteButton"> 
         Delete 
         </button> 
         </li>
     `;
+    
+
 
 
     }

@@ -8,19 +8,22 @@ function getToDos() {
 
 
 function appendToDosToDom(toDoList) {
-    let toDosBody = document.querySelector("#outPut")
-    toDosBody.innerHTML = '';
+    let toDosLists = document.querySelector("#outPut")
+    toDosLists.innerHTML = '';
     for (let toDos of toDoList) {
-        toDosBody.innerHTML += `
+
+        toDosLists.innerHTML += 
+        
+        `
          <ul>
           <li id=list data-testid="toDoItem">${toDos.text}
-        <button onClick="changeToCompleted('false',${toDos.id})" data-testid="completeButton"> complete </button> 
+        <button class="completedBtn" onClick="changeToCompleted('false',${toDos.id})" data-testid="completeButton"> complete </button> 
         <button onClick="deleteToDos(${toDos.id})" data-testid="deleteButton"> 
         Delete 
         </button> 
         </li>
     `;
-   
+
 
     }
 
@@ -28,10 +31,13 @@ function appendToDosToDom(toDoList) {
 }
 
 
+
+
 function postList(event){
     event.preventDefault();
     let payloadObject = {
         text: document.querySelector('#todosinput').value
+        
     }
  console.log(payloadObject)
 
@@ -40,6 +46,8 @@ function postList(event){
     }).catch((error) => {
         alert('Something went wrong');
     });
+    
+
     
   
 }
@@ -51,23 +59,18 @@ function changeToCompleted(completed, completeId) {
         data: {
             completed: completed
         }
+        
     })
     .then((response) => {
         getToDos()
     })
     .catch((error) => {
         console.log('Error', error);
-        alert('Something went wrong on /songs/rank/:id');
+        alert('Something went wrong');
     })
-    let div = document.querySelector('div')
-    if (list === 'true'){
-        div.classList.add('completed')
 
-    }
 
-    
 }
-
 
 
 

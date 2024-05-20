@@ -48,30 +48,6 @@ router.delete('/:id', (req, res) => {
 });
 
 
-router.put('/complete/:id', (req, res) => {
-    let completeId = req.params.id
-    let completed = req.body.completed
-
-    let queryText = ''
-
-    if (completed === 'false'){
-        queryText = `
-            UPDATE "todos" SET "isComplete"=TRUE
-            WHERE "id"= $1;
-        `
-    } else {
-        res.sendStatus(500)
-    }
-
-    pool.query(queryText, [completeId])
-        .then((result) => {
-            res.sendStatus(204)
-        })
-        .catch((err) => {
-            console.log(`Error making query.. '${queryText}'`, err)
-            res.sendStatus(500)
-        })
-})
 
 
 

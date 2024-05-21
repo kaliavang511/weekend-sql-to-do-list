@@ -1,7 +1,24 @@
 .completed{
-    color: green;
+    color: rgb(32, 125, 77)
+    
 }
 
-.notCompleted{
-    color: red 
+.completedBtn,.deleteBtn,.submit{
+    border-radius: 5px;
+    
+}
+
+body{
+    background-color: rgb(220, 241, 245);
+}
+
+header{
+    text-align: center;
+    font-family: cursive;
+    color: white;
+    background-color:rgb(181, 215, 216) 
+}
+
+.image{
+    padding: 150px;
 }

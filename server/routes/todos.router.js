@@ -51,6 +51,7 @@ router.delete('/:id', (req, res) => {
 router.put('/complete/:id', (req, res) => {
     let completeId = req.params.id
     let completed = req.body.completed
+ 
 
     let queryText = ''
 
@@ -64,6 +65,7 @@ router.put('/complete/:id', (req, res) => {
     }
 
     
+    
     pool.query(queryText, [completeId])
         .then((result) => {
             res.sendStatus(204)
@@ -76,6 +78,26 @@ router.put('/complete/:id', (req, res) => {
 
 
 
+
+// router.put('/edit/:id', (req, res) => {
+//     let editId = req.params.id
+//     let edit = req.body.edit
+
+//     let queryText = `
+//         UPDATE INTO "todos" ("text") = ${edit}
+//         VALUES ($1);`
+
+    
+    
+//     pool.query(queryText, [editId])
+//         .then((result) => {
+//             res.sendStatus(204)
+//         })
+//         .catch((err) => {
+//             console.log(`Error making query.. '${queryText}'`, err)
+//             res.sendStatus(500)
+//         })
+// })
 
 
 

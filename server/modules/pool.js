@@ -13,4 +13,15 @@ const pool = new pg.Pool({
     allowExitOnIdle: true 
 })
 
+if (process.env.DATABASE_URL) {
+  pool = new pg.Pool({
+      connectionString: process.env.DATABASE_URL,
+      ssl: {
+          rejectUnauthorized: false
+      }
+  });
+}
+
+
+
 module.exports = pool

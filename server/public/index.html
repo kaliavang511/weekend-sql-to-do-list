@@ -12,17 +12,25 @@
   <header>
     <h1>SQL TO-DO List</h1>
   </header>
+  <p>
+      Enter task below 
+  </p>
+
+  <p>
+    Line will turn green when it's mark completed 
+  </p>
   <form onSubmit="postList(event)">
     <input id="todosinput"
     data-testid="toDoTextInput"
     placeholder="Enter here">
     <button data-testid="submitButton"
     type="submit"
+    class="submit"
     >submit</button>
   </form>
 
-    <div id="outPut" class="outPut">   </div>
+    <ul id="outPut" class="outPut">   </ul>
  
-
+  <img class="image" src="https://ih1.redbubble.net/image.1428189503.5441/mwo,x1000,ipad_2_snap-pad,750x1000,f8f8f8.jpg">
 </body>
 </html>

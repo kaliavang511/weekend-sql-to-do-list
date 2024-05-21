@@ -77,25 +77,6 @@ function changeToCompleted(completed, completeId) {
 
 }
 
-// function edit(edit, editId) {  
-//     axios({
-//         method: "PUT",
-//         url: "/todos/edit/" + editId,
-//         data: {
-//             edit: edit
-//         }
-        
-//     })
-//     .then((response) => {
-//         getToDos()
-//     })
-//     .catch((error) => {
-//         console.log('Error', error);
-//         alert('Something went wrong');
-//     })
-
-
-// }
 
 
 
